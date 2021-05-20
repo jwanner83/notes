@@ -15,9 +15,5 @@
     "react-dom": "^17.0.1",
     "recoil": "^0.3.1"
   },
-  "devDependencies": {
-    "babel-plugin-react-scoped-css": "^1.1.1",
-    "scoped-css-loader": "^1.0.0"
-  },
   "license": "MIT"
 }
