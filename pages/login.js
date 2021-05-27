@@ -26,12 +26,8 @@ export default function Login () {
         })
 
         if (error) {
-            console.error('error while logging in')
-            console.error(error)
+            console.log('error')
         } else {
-            console.log('success')
-            console.log(user)
-
             setUser(user)
         }
     }
@@ -44,7 +40,7 @@ export default function Login () {
 
             <main>
                 <h1>Notes</h1>
-                {!user.email &&
+                {!user &&
                     <div className="login">
                         <input type={'text'} placeholder={'email'} onChange={handleEmail} />
                         <input type={'password'} placeholder={'password'} onChange={handlePassword} />
@@ -53,7 +49,7 @@ export default function Login () {
                     </div>
                 }
 
-                {user.email &&
+                {user &&
                     <Link href="/home">
                         <a>home</a>
                     </Link>

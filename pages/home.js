@@ -10,6 +10,7 @@ export default function Home () {
 
     const logout = async () => {
         await supabase.auth.signOut()
+        await router.push('/login')
     }
 
     return (
@@ -18,11 +19,13 @@ export default function Home () {
                 <title>Home</title>
             </Head>
 
-            <main>
-                user { user.email }
+            {user &&
+                <main>
+                    user { user.email }
 
-                <button onClick={logout}>logout</button>
-            </main>
+                    <button onClick={logout}>logout</button>
+                </main>
+            }
         </div>
     )
 }
