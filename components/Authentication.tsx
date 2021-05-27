@@ -5,21 +5,25 @@ import { useEffect } from 'react'
 import { userState } from '../states/user'
 
 export default function Authentication({ children }) {
-    const [setUser] = useRecoilState(userState)
+    const [user, setUser] = useRecoilState(userState)
 
-    useEffect(async () => {
-        const user = await supabase.auth.user()
+    useEffect( () => {
+        async function defineUser () {
+            const user = await supabase.auth.user()
 
-        if (user) {
-            setUser(user)
+            if (user) {
+                setUser(user)
+            }
         }
+
+        defineUser()
 
         supabase.auth.onAuthStateChange((event, session) => {
             if (event === ('SIGNED_OUT' || 'SIGNED_IN' || 'USER_UPDATED')) {
                 setUser(session)
             }
         })
-    }, []);
+    }, [])
 
 
     return <div>{children}</div>

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { supabase } from '../supabase/init'
 import { useRecoilState } from 'recoil'
-import { sessionState, userState } from '../states/user'
+import { userState } from '../states/user'
 import { useState } from 'react'
 import Link from 'next/link'
 
