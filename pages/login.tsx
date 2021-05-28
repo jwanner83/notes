@@ -1,9 +1,7 @@
-import Head from 'next/head'
 import { supabase } from '../supabase/init'
 import { useRecoilState } from 'recoil'
 import { userState } from '../states/user'
 import { useState } from 'react'
-import Link from 'next/link'
 
 export default function Login () {
     const [user, setUser] = useRecoilState(userState)
@@ -33,28 +31,16 @@ export default function Login () {
     }
 
     return (
-        <div className="container">
-            <Head>
-                <title>Login</title>
-            </Head>
+      <div className="login">
+          <h1>Login</h1>
+          {!user &&
+          <div className="login">
+              <input type={'text'} placeholder={'email'} onChange={handleEmail} />
+              <input type={'password'} placeholder={'password'} onChange={handlePassword} />
 
-            <main>
-                <h1>Notes</h1>
-                {!user &&
-                    <div className="login">
-                        <input type={'text'} placeholder={'email'} onChange={handleEmail} />
-                        <input type={'password'} placeholder={'password'} onChange={handlePassword} />
-
-                        <button onClick={login}>login</button>
-                    </div>
-                }
-
-                {user &&
-                    <Link href="/home">
-                        <a>home</a>
-                    </Link>
-                }
-            </main>
-        </div>
+              <button onClick={login}>login</button>
+          </div>
+          }
+      </div>
     )
 }
