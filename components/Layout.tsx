@@ -1,5 +1,4 @@
 import Navigation from './Navigation'
-import { Head } from 'next/document'
 import Breadcrumb from './Breadcrumb'
 
 export default function Layout ({ children }) {

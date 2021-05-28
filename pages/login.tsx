@@ -30,16 +30,28 @@ export default function Login () {
         }
     }
 
+    const logout = async () => {
+        await supabase.auth.signOut()
+    }
+
     return (
       <div className="login">
           <h1>Login</h1>
+
           {!user &&
-          <div className="login">
+            <div className="login">
               <input type={'text'} placeholder={'email'} onChange={handleEmail} />
               <input type={'password'} placeholder={'password'} onChange={handlePassword} />
 
               <button onClick={login}>login</button>
-          </div>
+            </div>
+          }
+
+          {user &&
+            <div>
+                <p><b>E-Mail:</b> { user.email }</p>
+                <button onClick={logout}>logout</button>
+            </div>
           }
       </div>
     )
