@@ -54,6 +54,10 @@ export default function Layout ({ children }) {
           --navigation-color: #9C9C9C;
           --navigation-color-active: #fff;
           
+          --button-background: #fff;
+          --button-color: #000;
+          --button-hover-opacity: 0.8;
+          
           --heading-font: 'Inter', sans-serif;
           --font: 'Inter', sans-serif;
         }
@@ -72,6 +76,25 @@ export default function Layout ({ children }) {
         html, body, div, span, button, input, textarea, label, p, a {
           font-family: var(--font);
           color: var(--text-color);
+        }
+        
+        input {
+          padding: 6px 6px;
+          border: none;
+          background: var(--button-background);
+          color: var(--button-color)
+        }
+        
+        button {
+          padding: 6px 20px;
+          font-weight: bold;
+          border: none;
+          background: var(--button-background);
+          color: var(--button-color)
+        }
+        
+        button:hover {
+          opacity: var(--button-hover-opacity);
         }
         
         * {

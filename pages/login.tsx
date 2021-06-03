@@ -43,14 +43,14 @@ export default function Login () {
               <input type={'text'} placeholder={'email'} onChange={handleEmail} />
               <input type={'password'} placeholder={'password'} onChange={handlePassword} />
 
-              <button onClick={login}>login</button>
+              <button onClick={login}>Login</button>
             </div>
           }
 
           {user &&
             <div>
                 <p><b>E-Mail:</b> { user.email }</p>
-                <button onClick={logout}>logout</button>
+                <button onClick={logout}>Logout</button>
             </div>
           }
       </div>

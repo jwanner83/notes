@@ -3,9 +3,11 @@ import { useRecoilState } from 'recoil'
 import { useEffect } from 'react'
 
 import { userState } from '../states/user'
+import { useRouter } from 'next/router'
 
 export default function Authentication({ children }) {
     const [user, setUser] = useRecoilState(userState)
+    const router = useRouter()
 
     useEffect( () => {
         async function defineUser () {
@@ -18,9 +20,13 @@ export default function Authentication({ children }) {
 
         defineUser()
 
-        supabase.auth.onAuthStateChange((event, session) => {
+        supabase.auth.onAuthStateChange(async (event, session) => {
             if (event === ('SIGNED_OUT' || 'SIGNED_IN' || 'USER_UPDATED')) {
                 setUser(session)
+            }
+
+            if (event === 'SIGNED_OUT' && router.pathname !== '/login') {
+                await router.push('/login')
             }
         })
     }, [])

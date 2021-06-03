@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 export default function Authentication() {
   const router = useRouter()
-  const links: Array<string> = ['home', 'login', 'folders']
+  const links: Array<string> = ['home', 'login', 'folders', 'note']
 
   return (
     <nav className="navigation">
